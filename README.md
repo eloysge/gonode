@@ -14,3 +14,8 @@ npx eslint --init
 # Banco de dados (postgres)
 
 npm i --save pg
+
+
+# Criação de Model 
+
+adonis make:model File -m -c (-m migration / -c controller)
