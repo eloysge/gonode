@@ -92,7 +92,7 @@ class ProjectController {
   async destroy ({ params, response }) {
     try {
       const project = await Project.findOrFail(params.id)
-      project.delete()
+      await project.delete()
     } catch (err) {
       return response
         .status(err.status)
