@@ -1,5 +1,7 @@
 'use strict'
 
+const Antl = use('Antl')
+
 class TaskUpdate {
   get validateAll () {
     return true
@@ -9,6 +11,10 @@ class TaskUpdate {
     return {
       due_date: 'date'
     }
+  }
+
+  get messages () {
+    return Antl.list('validation')
   }
 }
 
