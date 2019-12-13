@@ -7,7 +7,7 @@ class Task extends Model {
     super.boot()
 
     this.addHook('afterCreate', 'TaskHook.sendNewTaskMail')
-    this.addHook('beforeSave', 'TaskHook.sendNewTaskMail')
+    this.addHook('afterUpdate', 'TaskHook.sendNewTaskMail')
   }
 
   project () {

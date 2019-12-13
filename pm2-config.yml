@@ -1,0 +1,6 @@
+apps:
+  - name: 'adonis-gonode'
+    script: server.js
+
+  - name: 'adonis-gonode-kue'
+    script: adonis kue:listen

@@ -1,16 +1,13 @@
 'use strict'
 
-const User = use('App/Models/User')
 const Kue = use('Kue')
 const Job = use('App/Jobs/NewTaskMail')
 
 const TaskHook = exports = module.exports = {}
 
 TaskHook.sendNewTaskMail = async (taskInstance) => {
-  if (!taskInstance.user_id || !taskInstance.dirty.user_id) return
-
-  const user = await User.findOrFail(taskInstance.user_id)
-  if (!user) return
+  if (!taskInstance.user_id && !taskInstance.dirty.user_id) return
+  if ((taskInstance.created_at !== taskInstance.updated_at) && !taskInstance.dirty.user_id) return
 
   const { email, username } = await taskInstance.user().fetch()
   const file = await taskInstance.file().fetch()
